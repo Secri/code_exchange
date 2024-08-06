@@ -1,2 +1,2 @@
 # code_exchange
-Repo destiné à l'échange de code.
+Repo destiné à échanger du code.
