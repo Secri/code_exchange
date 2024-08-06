@@ -11,6 +11,8 @@
 								label: 'Add to Cart'
 							};
 							
+			const currentPath = window.location.pathname; //On récupère le slug de la page courante
+							
 			const buttonTypes = [ addToCart ]; //On met les objets dans un tableau
 			
 			if (buttonTypes.length > 0) { //On vérifie que le tableau n'est pas vide
@@ -26,7 +28,7 @@
 							for ( const button of buttonsCollection ) { //On boucle sur les nodes
 							
 								//On ajoute l'attribut onclick qui va envoyer les infos à la balise GTAG
-								button.setAttribute("onclick", "gtag(\'event\', \'CTA Custom Tracking\', {\'event_type\': \'clic\', \'button_type\' : '" + type.label + "'});");						
+								button.setAttribute("onclick", "gtag(\'event\', \'CTA Custom Tracking\', {\'event_type\': \'clic\', \'button_type\' : '" + type.label + " from : " + currentPath + "'});");
 							
 							}
 						
