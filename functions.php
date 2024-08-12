@@ -6,7 +6,7 @@
 	
 	    }
 	
-      if ( is_user_logged_in() ) { //Si l'internaute n'est pas connecté à l'interface d'administration
+      if ( ! is_user_logged_in() ) { //Si l'internaute n'est pas connecté à l'interface d'administration
 		
 	      add_action( 'wp_enqueue_scripts', 'loadGtagEvents', 99); //On hook wp_enqueue_scripts et on met une priorité basse
 		
