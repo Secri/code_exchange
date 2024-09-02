@@ -2,7 +2,7 @@
       
       function loadGtagEvents() {
 		
-		    wp_enqueue_script( 'add_gtag_event', get_stylesheet_directory_uri() . '/js/gtag_tracking.js' ); //On va chercher le script js
+		    wp_enqueue_script( 'add_gtag_event', get_stylesheet_directory_uri() . '/assets/js/gtag_tracking.js' ); //On va chercher le script js
 	
 	    }
 	
