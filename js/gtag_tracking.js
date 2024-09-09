@@ -28,7 +28,7 @@
 							for ( const button of buttonsCollection ) { //On boucle sur les nodes
 							
 								//On ajoute l'attribut onclick qui va envoyer les infos à la balise GTAG
-								button.setAttribute("onclick", "gtag(\'event\', \'CTA Custom Tracking\', {\'event_type\': \'clic\', \'CTA\' : '" + type.label + " from : " + currentPath + "'});");
+								button.setAttribute("onclick", "gtag(\'event\', \'cta_custom_tracking\', {\'event_type\': \'clic\', \'button_infos\' : '" + type.label + " from : " + currentPath + "'});");
 							
 							}
 						
