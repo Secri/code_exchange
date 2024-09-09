@@ -8,7 +8,7 @@
 													'.button.product_type_simple.add_to_cart_button.ajax_add_to_cart',
 													'.single_add_to_cart_button.button.alt'
 												  ],
-								label: 'Add to Cart' //On spécifie le type de CTA
+								label: 'Added to Cart' //On spécifie le type de CTA
 							};
 							
 			const currentPath = window.location.pathname; //On récupère le slug de la page courante qu'on va remonter à GA4
