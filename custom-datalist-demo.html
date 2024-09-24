@@ -64,25 +64,27 @@
 	
     <label>Choisis un navigateur</label>
 	
-    <input  autocomplete="off" role="combobox" list="" id="input" name="browsers" placeholder="Select your fav browser">
+    <input  autocomplete="off" role="combobox" list="" id="input" name="browsers" placeholder="Tape le nom de ton nav favori">
 	<!-- IMPORTANT - Garder l'attribut list vide pour masquer la liste déroulante par défaut -->
 
 	  <datalist id="browsers" role="listbox">
 		<option value="Internet Explorer">Internet Explorer</option>
+		<option value="Intranet Explorer">Intranet Explorer</option>
 		<option value="Chrome">Chrome</option>
 		<option value="Safari">Safari</option>
 		<option value="Microsoft Edge">Microsoft Edge</option>
 		<option value="Brave">Brave</option>
-		<option value="Microsoft Edge">Microsoft Edge</option>
 		<option value="Opera">Opera</option>
+		<option value="Firefox">Firefox</option>
 	  </datalist>
   </fieldset>
   
   <script>
-	input.onfocus = function () {
+	//Non nécessaire à priori, on veut que la liste des suggestions apparaissent que lorsqu'on a tapé au moins 3 caractères
+	/*input.onfocus = function () {
 		browsers.style.display = 'block';
 		input.style.borderRadius = "5px 5px 0 0";  
-	};
+	};*/
 	
 	for (let option of browsers.options) {
 	  option.onclick = function () {
@@ -98,18 +100,28 @@
 		
 		browsers.style.display = 'none';
 		input.style.borderRadius = "5px";
-		input.blur();
 			
 	}
 
 	input.oninput = function() {
 	  currentFocus = -1;
 	  var text = input.value.toUpperCase();
+	  
+	  if (text.length > 2) {
+		browsers.style.display = 'block';
+		input.style.borderRadius = "5px 5px 0 0";
+	  } else {
+		browsers.style.display = 'none';
+		input.style.borderRadius = "5px";
+	  }
+	  
 	  for (let option of browsers.options) {
 		if(option.value.toUpperCase().indexOf(text) > -1){
 		  option.style.display = "block";
-	  }else{
-		option.style.display = "none";
+		} else {
+			
+			option.style.display = "none";
+		
 		}
 	  };
 	}
