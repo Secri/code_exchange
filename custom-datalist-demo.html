@@ -69,6 +69,7 @@
 
 	  <datalist id="browsers" role="listbox">
 		<option value="Internet Explorer">Internet Explorer</option>
+		<option value="Internet Explorer sucks">Internet Explorer sucks</option>
 		<option value="Intranet Explorer">Intranet Explorer</option>
 		<option value="Chrome">Chrome</option>
 		<option value="Safari">Safari</option>
@@ -80,11 +81,19 @@
   </fieldset>
   
   <script>
-	//Non nécessaire à priori, on veut que la liste des suggestions apparaissent que lorsqu'on a tapé au moins 3 caractères
-	/*input.onfocus = function () {
-		browsers.style.display = 'block';
-		input.style.borderRadius = "5px 5px 0 0";  
-	};*/
+	input.onfocus = input.onclick = function () {
+	
+		var text = input.value.toUpperCase();
+	  
+		if (text.length > 1) {
+			browsers.style.display = 'block';
+			input.style.borderRadius = "5px 5px 0 0";
+		} else {
+			browsers.style.display = 'none';
+			input.style.borderRadius = "5px";
+		}
+		
+	};
 	
 	for (let option of browsers.options) {
 	  option.onclick = function () {
@@ -94,20 +103,13 @@
 	  }
 	};
 	
-	let trigger = document.querySelector('fieldset');
+	var trigger = document.querySelector('fieldset');
 	
-	trigger.onmouseleave = function () {
-		
-		browsers.style.display = 'none';
-		input.style.borderRadius = "5px";
-			
-	}
-
 	input.oninput = function() {
 	  currentFocus = -1;
 	  var text = input.value.toUpperCase();
 	  
-	  if (text.length > 2) {
+	  if (text.length > 1) {
 		browsers.style.display = 'block';
 		input.style.borderRadius = "5px 5px 0 0";
 	  } else {
@@ -124,6 +126,13 @@
 		
 		}
 	  };
+	}
+	
+	trigger.onmouseleave = function () {
+		
+		browsers.style.display = 'none';
+		input.style.borderRadius = "5px";
+			
 	}
 	
 	var currentFocus = -1;
@@ -144,7 +153,7 @@
 			}
 	  }
 	}
-
+	
 	function addActive(x) {
 		if (!x) return false;
 		removeActive(x);
