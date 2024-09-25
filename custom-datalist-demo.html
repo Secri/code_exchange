@@ -81,6 +81,7 @@
   </fieldset>
   
   <script>
+	/** COMPORTEMENT SUR FOCUS ET CLIC DANS L'INPUT **/
 	input.onfocus = input.onclick = function () {
 	
 		var text = input.value.toUpperCase();
@@ -94,17 +95,9 @@
 		}
 		
 	};
+	/*************************************************/
 	
-	for (let option of browsers.options) {
-	  option.onclick = function () {
-		input.value = option.value;
-		browsers.style.display = 'none';
-		input.style.borderRadius = "5px";
-	  }
-	};
-	
-	var trigger = document.querySelector('fieldset');
-	
+	/** COMPORTEMENT SUR l'INPUT DE VALEURS AU CLAVIER **/
 	input.oninput = function() {
 	  currentFocus = -1;
 	  var text = input.value.toUpperCase();
@@ -125,15 +118,29 @@
 			option.style.display = "none";
 		
 		}
-	  };
-	}
+	  }
+	};
+	/*************************************************/
 	
+	/** MASQUER LA LISTE LORSQUE LE CONTENEUR PERD LE FOCUS **/
+	var trigger = document.querySelector('fieldset');
 	trigger.onmouseleave = function () {
 		
 		browsers.style.display = 'none';
 		input.style.borderRadius = "5px";
 			
 	}
+	/*****************************************************/
+	
+	/** COMPORTEMENT AU CLIC SUR UNE OPTION DE LA LISTE **/
+	for (let option of browsers.options) {
+	  option.onclick = function () {
+		input.value = option.value;
+		browsers.style.display = 'none';
+		input.style.borderRadius = "5px";
+	  }
+	};
+	/*****************************************************/
 	
 	var currentFocus = -1;
 	input.onkeydown = function(e) {
